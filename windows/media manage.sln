@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "media manage", "media manage\media manage.vcproj", "{03785B20-6817-47C6-A050-5AFE82D6CC90}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{03785B20-6817-47C6-A050-5AFE82D6CC90}.Debug|Win32.ActiveCfg = Debug|Win32
+		{03785B20-6817-47C6-A050-5AFE82D6CC90}.Debug|Win32.Build.0 = Debug|Win32
+		{03785B20-6817-47C6-A050-5AFE82D6CC90}.Release|Win32.ActiveCfg = Release|Win32
+		{03785B20-6817-47C6-A050-5AFE82D6CC90}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
