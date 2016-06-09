@@ -8,28 +8,39 @@ using namespace std;
 class Media
 {
     public:
-        Media()
-        {
-            (0,0);
-        }
-        friend void Add_media(map<int,Media>&);
-        friend void Delete(map<int,Media>&);
-        friend void Add_number(map<int,Media>&);
-        friend void Save(map<int,Media>&);
-        friend void Load(map<int,Media>&);
-        friend void All_Add(map<int,Media>&);
-        friend void Print(map<int,Media>&);
+        Media() {};
         int number;
-    private:
         int part;
         string name;
 };
 
+void Save(map<int,Media> &C)
+{
+    map<int,Media>::iterator it=C.begin();
+    ofstream read;
+    read.close();
+    read.clear();
+    read.open("file.txt");
+    if(!read) {
+        cerr<<"错误"<<endl;
+    }
+    if(it==C.end()) {
+        cout<<"没有数据保存"<<endl;
+        system("pause");
+        return;
+    }
+    while(it!=C.end()) {
+        read<<it->first<<endl<<it->second.name<<endl<<it->second.part<<endl;
+        ++it;
+    }
+    read.close();
+    cout<<"保存成功！！"<<endl;
+}
+
 void Add_media(map<int,Media> &C)
 {
     char temp;
-    do
-    {
+    do {
         Media m;
         cout<<"输入视频名字"<<endl;
         cin>>m.name;
@@ -39,11 +50,11 @@ void Add_media(map<int,Media> &C)
         cin>>m.number;
         C[m.number] = m;
         cout<<"成功!!!    输入y，继续；任意键退出"<<endl;
-
         cin>>temp;
-    }while( temp=='y'||temp=='Y' );
+    }while(temp=='y' || temp=='Y');
     Save(C);
 }
+
 void Delete(map<int,Media> &C)
 {
     int number;
@@ -61,6 +72,7 @@ void Delete(map<int,Media> &C)
     Save(C);
     cout<<"删除成功"<<endl;
 }
+
 void Add_number(map<int,Media> &C)
 {
     char temp;
@@ -83,31 +95,7 @@ void Add_number(map<int,Media> &C)
         cin>>temp;
     }while(temp=='y'||temp=='Y');
 }
-void Save(map<int,Media> &C)
-{
-    map<int,Media>::iterator it=C.begin();
-    ofstream read;
-    read.close();
-    read.clear();
-    read.open("file.txt");
-    if(!read)
-    {
-        cerr<<"错误"<<endl;
-    }
-    if(it==C.end())
-    {
-        cout<<"没有数据保存"<<endl;
-        system("pause");
-        return;
-    }
-    while(it!=C.end())
-    {
-        read<<it->first<<endl<<it->second.name<<endl<<it->second.part<<endl;
-        ++it;
-    }
-    read.close();
-    cout<<"保存成功！！"<<endl;
-}
+
 void Load(map<int,Media> &C)
 {
     int number;
@@ -133,6 +121,7 @@ void Print(map<int,Media> &C)
         ++it;
     }
 }
+
 void All_Add(map<int,Media> &C)
 {
     map<int,Media> ::iterator it=C.begin();
