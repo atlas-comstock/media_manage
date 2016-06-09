@@ -23,10 +23,10 @@ void Save(map<int,Media> &C)
     read.open("file.txt");
     if(!read) {
         cerr<<"错误"<<endl;
+        return;
     }
-    if(it==C.end()) {
+    if(it == C.end()) {
         cout<<"没有数据保存"<<endl;
-        system("pause");
         return;
     }
     while(it!=C.end()) {
@@ -44,12 +44,12 @@ void Add_media(map<int,Media> &C)
         Media m;
         cout<<"输入视频名字"<<endl;
         cin>>m.name;
-        cout<<"输入看到葛集数"<<endl;
+        cout<<"输入看到的集数"<<endl;
         cin>>m.part;
         cout<<"给视频编号(不要重复）"<<endl;
         cin>>m.number;
         C[m.number] = m;
-        cout<<"成功!!!    输入y，继续；任意键退出"<<endl;
+        cout<<"成功!\n 输入y，继续；任意键退出"<<endl;
         cin>>temp;
     }while(temp=='y' || temp=='Y');
     Save(C);
@@ -59,13 +59,11 @@ void Delete(map<int,Media> &C)
 {
     int number;
     map<int,Media>::iterator it=C.begin();
-    cout<<"输入要删除视频葛号码"<<endl;
+    cout<<"输入要删除视频的号码"<<endl;
     cin>>number;
     it=C.find(number);
-    if( it==C.end() )
-    {
-        cout<<"无稳到该号码所对应视频"<<endl;
-        system("pause");
+    if(it == C.end()) {
+        cout<<"没找到该号码所对应视频"<<endl;
         return;
     }
     C.erase(it);
@@ -76,24 +74,21 @@ void Delete(map<int,Media> &C)
 void Add_number(map<int,Media> &C)
 {
     char temp;
-    do
-    {
+    do {
         int number;
-        cout<<"输入已看1集葛视频号码"<<endl;
+        cout<<"输入已看1集的视频号码"<<endl;
         cin>>number;
         map<int,Media>::iterator it= C.find(number);
-        if( it==C.end() )
-        {
-            cout<<"无稳到该号码所对应视频"<<endl;
-            system("pause");
+        if(it == C.end()) {
+            cout<<"没找到该号码所对应视频"<<endl;
             return;
         }
         ++it->second.part;
-        cout<<"添加后你而家t到葛集数系"<<it->second.part<<endl;
+        cout<<"添加后你现在看到的集数是"<<it->second.part<<endl;
         Save(C);
-        cout<<"继续添加？？？？(y/n)"<<endl;
+        cout<<"继续添加？(y/n)"<<endl;
         cin>>temp;
-    }while(temp=='y'||temp=='Y');
+    }while(temp=='y' || temp=='Y');
 }
 
 void Load(map<int,Media> &C)
@@ -103,8 +98,7 @@ void Load(map<int,Media> &C)
     load.clear();
     load.open("file.txt",ios::in|ios::out);
     Media media;
-    while(!load.eof())
-    {
+    while(!load.eof()) {
         load>>number;
         load>>media.name;
         load>>media.part;
@@ -114,9 +108,8 @@ void Load(map<int,Media> &C)
 
 void Print(map<int,Media> &C)
 {
-    map<int,Media>::iterator it=C.begin();
-    while(it!=C.end())
-    {
+    map<int,Media>::iterator it = C.begin();
+    while(it != C.end()) {
         cout<<it->first<<"   "<<it->second.name<<" "<<it->second.part<<endl;
         ++it;
     }
@@ -124,9 +117,8 @@ void Print(map<int,Media> &C)
 
 void All_Add(map<int,Media> &C)
 {
-    map<int,Media> ::iterator it=C.begin();
-    while(it!=C.end())
-    {
+    map<int,Media> ::iterator it = C.begin();
+    while(it != C.end()) {
         ++it->second.part;
         ++it;
     }
